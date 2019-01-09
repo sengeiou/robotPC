@@ -145,4 +145,17 @@ public class MessageService extends BaseService {
         String res = ResultPoor.getResult(uid);
         return res;
     }
+
+    //保存聊天记录
+    public static void saveRobotMessage(String content,String fromUserName,String ToUserName,String status,String beginTime,String endTime){
+        int uid = sendObjectCreate(6000, content, fromUserName, ToUserName, status,beginTime,endTime);
+        System.out.println("保存聊天");
+    }
+
+    //查询流通记录
+    public static String findRobotMessage(){
+        int sid = sendObject(6001);
+        String res = ResultPoor.getResult(sid);
+        return StringHandler.getRetString(res);
+    }
 }

@@ -26,7 +26,7 @@ public class PropertiesConf{
 	public static String UPLOAD_MESSAGE_IMAGE_PATH;
 	public static String WECHAT_IMAGE_LOACH_PATH;
 
-
+	public static String TO_USER_NAME;
 
 	public void init(){
 		Properties prop = new Properties();
@@ -52,7 +52,7 @@ public class PropertiesConf{
 			IMG_URL_PREFIX_TEST = (String)prop.get("imgUrlPrefixTest");
 			UPLOAD_MESSAGE_IMAGE_PATH = (String) prop.get("uploadMessageImagePath");
 			WECHAT_IMAGE_LOACH_PATH = (String) prop.get("wechatImageLocalPath");
-
+			TO_USER_NAME = (String) prop.get("toUserName");
 //			UPLOAD_PLAN_IMAGE_PATH = (String)prop.get("uploadPlanImagePath");
 
 		} catch (IOException e) {

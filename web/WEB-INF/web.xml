@@ -7,9 +7,9 @@
         <!--<listener-class>action.SeckillTimeListener</listener-class>-->
     <!--</listener>-->
 
-    <!--<listener>-->
-        <!--<listener-class>action.PddGoodsTimeListener</listener-class>-->
-    <!--</listener>-->
+    <listener>
+        <listener-class>action.PddGoodsTimeListener</listener-class>
+    </listener>
     <session-config>
         <session-timeout>180</session-timeout>
     </session-config>

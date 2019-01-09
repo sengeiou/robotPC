@@ -1,6 +1,7 @@
 package action;
 
 import action.service.BaseService;
+import action.wx.WXFilter;
 import model.PddGoodsManager;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
@@ -25,8 +26,8 @@ public class PddGoodsTimeListener extends BaseService implements ServletContextL
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         System.out.println(" -------------   pddTimeListener   ---------------start tme  form  " + LocalDateTime.now());
-        executeEightAtNightPerDay();
-        executePddOrder();
+        //executeEightAtNightPerDay();
+        executeRobotMessage();
     }
 
     public static void executeEightAtNightPerDay() {
@@ -46,7 +47,7 @@ public class PddGoodsTimeListener extends BaseService implements ServletContextL
                 TimeUnit.MILLISECONDS);
     }
 
-    public static void executePddOrder() {
+    public static void executeRobotMessage() {
         ScheduledExecutorService executorService = new ScheduledThreadPoolExecutor(
                 1,
                 new BasicThreadFactory.Builder().namingPattern("pddOrder-ScheduleReverse-pool-%d").daemon(true).build()
@@ -54,11 +55,11 @@ public class PddGoodsTimeListener extends BaseService implements ServletContextL
 //        long oneDay = 2 * 60 * 1000;
 //        long initDelay = getTimeMillis("6:00:00") - System.currentTimeMillis();
 //        initDelay = initDelay > 0 ? initDelay : oneDay + initDelay;
-        System.out.println(" -------------   拼多多订单定时任务   ---------------" + LocalDateTime.now());
+        System.out.println(" -------------   3分钟未收到信息终止客服服务   ---------------" + LocalDateTime.now());
         executorService.scheduleAtFixedRate(
-                new PddOrderManager(),
-                1000 * 60 * 5,
-                1000 * 60 * 5,
+                new WXFilter(),
+                1000*60 * 1,
+                1000*60 * 1,
                 TimeUnit.MILLISECONDS);
 
     }
